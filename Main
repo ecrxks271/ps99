@@ -1,5 +1,5 @@
 if game.PlaceId ~= 8737899170 then
-    game:GetService("Players").LocalPlayer:Kick("This script only works in game ID 8737899170")
+    game:GetService("Players").LocalPlayer:Kick("Wrong Game Retard")
     return
 end
 
@@ -316,7 +316,6 @@ task.spawn(function()
             
             local bundleArgs = {
                 ["Charm Stone"] = {"Charm Stone"},
-                ["Mini Chest"] = {"Mini Chest"},
                 ["Gift Bag"] = {"Gift Bag", 10},
                 ["Large Gift Bag"] = {"Large Gift Bag", 10},
                 ["Toy Bundle"] = {"Toy Bundle", 100},
@@ -325,7 +324,8 @@ task.spawn(function()
                 ["Flag Bundle"] = {"Flag Bundle", 100},
                 ["Enchant Bundle"] = {"Enchant Bundle", 100},
                 ["Large Potion Bundle"] = {"Large Potion Bundle", 100},
-                ["Large Enchant Bundle"] = {"Large Enchant Bundle", 100}
+                ["Large Enchant Bundle"] = {"Large Enchant Bundle", 100},
+                ["Mini Chest"] = {"Mini Chest"}
             }
 
             -- Überprüfen, ob das Bundle gültig ist
@@ -362,7 +362,7 @@ MainSection:AddDropdown('WheelSelection', {
         'Tech Wheel',
         'Void Wheel'
     },
-    Default = {'Crystal Key Wheel'},  -- Standardwert ist 'Crystal Key Wheel'
+    Default = {'Spinny Wheel'},
     Multi = false,  -- Nur eine Auswahl möglich
     Text = 'Select Wheel',
     Tooltip = 'Choose the wheel to spin automatically',
@@ -379,8 +379,7 @@ task.spawn(function()
             local selectedWheel = _G.SelectedWheel
 
             -- Verschiedene Scripte für jedes Wheel
-            if selectedWheel == 'Crystal Key Wheel' then
-                -- Script für Crystal Key Wheel
+            if selectedWheel == 'Spinny Wheel' then
                 local args = {"StarterWheel"}
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Spinny Wheel: Request Spin"):InvokeServer(unpack(args))
 
