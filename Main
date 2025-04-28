@@ -356,7 +356,7 @@ MainSection:AddToggle('AutoSpinTicketWheel', {
 -- Dropdown für die Wheel-Auswahl
 MainSection:AddDropdown('WheelSelection', {
     Values = {
-        'Crystal Key Wheel',
+        'Spinny Wheel',
         'Tech Wheel',
         'Void Wheel'
     },
