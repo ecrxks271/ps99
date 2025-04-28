@@ -363,24 +363,22 @@ MainSection:AddDropdown('WheelSelection', {
         'Void Wheel'
     },
     Default = {'Spinny Wheel'},
-    Multi = false,  -- Nur eine Auswahl möglich
+    Multi = false,
     Text = 'Select Wheel',
     Tooltip = 'Choose the wheel to spin automatically',
 
     Callback = function(Values)
-        _G.SelectedWheel = Values[1]  -- Nur eine Auswahl wird gespeichert
+        _G.SelectedWheel = Values[1]
     end
 })
 
--- Hintergrundloop für Auto Spin Ticket Wheel
 task.spawn(function()
     while true do
         if _G.AutoSpinTicketWheel then
             local selectedWheel = _G.SelectedWheel
 
-            -- Verschiedene Scripte für jedes Wheel
             if selectedWheel == 'Spinny Wheel' then
-                local args = {"StarterWheel"}
+                local args = {"Spinny Wheel"}
                 game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Spinny Wheel: Request Spin"):InvokeServer(unpack(args))
 
             elseif selectedWheel == 'Tech Wheel' then
