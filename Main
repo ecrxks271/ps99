@@ -315,8 +315,9 @@ task.spawn(function()
             
             local bundleArgs = {
                 ["Charm Stone"] = {"Charm Stone"},
-                ["Gift Bag"] = {"Gift Bag", 1},
-                ["Large Gift Bag"] = {"Large Gift Bag", 1},
+                ["Mini Chest"] = {"Mini Chest"},
+                ["Gift Bag"] = {"Gift Bag", 10},
+                ["Large Gift Bag"] = {"Large Gift Bag", 10},
                 ["Toy Bundle"] = {"Toy Bundle", 100},
                 ["Potion Bundle"] = {"Potion Bundle", 100},
                 ["Fruit Bundle"] = {"Fruit Bundle", 100},
