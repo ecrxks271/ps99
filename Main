@@ -1,4 +1,4 @@
-if game.PlaceId ~= 8737899170 then
+if game.PlaceId ~= 8737899170 15588442388 17503543197 then
     game:GetService("Players").LocalPlayer:Kick("Wrong Game Retard")
     return
 end
