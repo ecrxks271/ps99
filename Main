@@ -287,7 +287,6 @@ MainSection:AddToggle('AutoOpenBundles', {
 MainSection:AddDropdown('BundleSelection', {
     Values = {
         'Charm Stone',
-        'Mini Chest',
         'Large Gift Bag',
         'Gift Bag',
         'Toy Bundle',
@@ -297,6 +296,7 @@ MainSection:AddDropdown('BundleSelection', {
         'Enchant Bundle',
         'Large Potion Bundle',
         'Large Enchant Bundle',
+        'Mini Chest',
     },
     Default = 1,  -- Standardwert (Charm Stone)
     Multi = false,
