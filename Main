@@ -1,4 +1,14 @@
-if game.PlaceId ~= 8737899170 15588442388 17503543197 then
+local allowedPlaceIds = {8737899170, 15588442388, 17503543197}
+
+local isValidGame = false
+for _, placeId in ipairs(allowedPlaceIds) do
+    if game.PlaceId == placeId then
+        isValidGame = true
+        break
+    end
+end
+
+if not isValidGame then
     game:GetService("Players").LocalPlayer:Kick("Wrong Game Retard")
     return
 end
