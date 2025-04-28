@@ -582,7 +582,7 @@ local EasterEventSection = Tabs.Main:AddRightGroupbox('Easter Event')
 EasterEventSection:AddToggle('AutoMakeHeroic', {
     Text = 'Auto Make Heroic',
     Default = false,
-    Tooltip = 'Automatically Use heroic',
+    Tooltip = 'Automatically Make Chest Heroic',
     Callback = function(Value)
         _G.AutoMakeHeroic = Value
         while _G.AutoMakeHeroic do
