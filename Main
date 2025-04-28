@@ -287,6 +287,7 @@ MainSection:AddToggle('AutoOpenBundles', {
 MainSection:AddDropdown('BundleSelection', {
     Values = {
         'Charm Stone',
+        'Mini Chest',
         'Large Gift Bag',
         'Gift Bag',
         'Toy Bundle',
