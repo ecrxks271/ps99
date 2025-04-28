@@ -1,0 +1,735 @@
+if game.PlaceId ~= 8737899170 then
+    game:GetService("Players").LocalPlayer:Kick("This script only works in game ID 8737899170")
+    return
+end
+
+local repo = 'https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/'
+
+local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
+local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
+local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+
+local Window = Library:CreateWindow({
+    Title = 'Pet Simulator 99! 🐰',
+    Center = true,
+    AutoShow = true,
+    TabPadding = 8,
+    MenuFadeTime = 0.2
+})
+
+local Tabs = {
+    Main = Window:AddTab('Main'),
+    ['UI Settings'] = Window:AddTab('UI Settings'),
+}
+
+-- Main Section
+local MainSection = Tabs.Main:AddLeftGroupbox('Main')
+
+-- Auto Ultimate Toggle
+MainSection:AddToggle('AutoUltimate', {
+    Text = 'Auto Ultimate',
+    Default = false,
+    Tooltip = 'Automatically activate the selected ultimate',
+    Callback = function(Value)
+        _G.AutoUltimate = Value
+        if not _G.AutoUltimate then
+            _G.SelectedUltimate = nil  -- Stop ultimate if toggle is off
+        end
+    end
+})
+
+-- Dropdown for selecting Ultimate
+MainSection:AddDropdown('UltimateDropdown', {
+    Values = {'Pet Surge', 'TNT Shower', 'Ground Pound', 'Black Hole', 'Hidden Treasure', 'Nightmare', 'UFO', 'Chest Spell', 'Tornado', 'Tsunami', 'Lightning Storm'},
+    Default = 1,  -- Default selection (1 corresponds to 'Pet Surge')
+    Text = 'Select Ultimate',
+    Tooltip = 'Choose which ultimate to auto activate',
+    Callback = function(Value)
+        _G.SelectedUltimate = Value
+    end
+})
+
+-- Hintergrundloop für Auto Ultimate
+task.spawn(function()
+    while true do
+        task.wait(0)
+
+        if _G.AutoUltimate and _G.SelectedUltimate then
+            local args = { [1] = _G.SelectedUltimate }
+
+            -- Activate the selected ultimate
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Ultimates: Activate"):InvokeServer(unpack(args))
+        end
+
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Combine Keys Toggle
+MainSection:AddToggle('AutoCombineKeys', {
+    Text = 'Auto Combine Keys',
+    Default = false,
+    Tooltip = 'Activate Auto Combine for all Keys',
+
+    Callback = function(Value)
+        _G.AutoCombineKeys = Value
+    end
+})
+
+-- Hintergrundloop für Auto Combine Keys
+task.spawn(function()
+    while true do
+        task.wait(0)
+
+        if _G.AutoCombineKeys then
+            -- Crystal Key Combine
+            local args = { [1] = 1 }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("CrystalKey_Combine"):InvokeServer(unpack(args))
+
+            -- Secret Key Combine
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("SecretKey_Combine"):InvokeServer(unpack(args))
+
+            -- Tech Key Combine
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("TechKey_Combine"):InvokeServer(unpack(args))
+
+            -- Void Key Combine
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("VoidKey_Combine"):InvokeServer(unpack(args))
+        end
+
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Eat Fruits Toggle
+MainSection:AddToggle('AutoEatFruits', {
+    Text = 'Auto Eat Fruits',
+    Default = false,
+    Tooltip = 'Activate to automatically eat fruits',
+
+    Callback = function(Value)
+        _G.AutoEatFruits = Value
+    end
+})
+
+-- Hintergrundloop für Auto Eat Fruits
+task.spawn(function()
+    while true do
+        if _G.AutoEatFruits then
+            -- Fruit 1
+            local args1 = {
+                [1] = "3248a2ea4527457c9224f80da6a01869",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Fruits: Consume"):FireServer(unpack(args1))
+            wait(0.1) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+
+            -- Fruit 2
+            local args2 = {
+                [1] = "4e6846919597443b86dfd533c262e694",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Fruits: Consume"):FireServer(unpack(args2))
+            wait(0.1) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+
+            -- Fruit 3
+            local args3 = {
+                [1] = "b1cba486ec9b4472a0ad5df6d3d53f12",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Fruits: Consume"):FireServer(unpack(args3))
+            wait(0.1) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+
+            -- Fruit 4
+            local args4 = {
+                [1] = "38e5baee7d3e463a8a4fa3fd83b86ae3",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Fruits: Consume"):FireServer(unpack(args4))
+            wait(0.1) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+
+            -- Fruit 5
+            local args5 = {
+                [1] = "5e890bfb6f0c40d389a3f26fd9f21b98",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Fruits: Consume"):FireServer(unpack(args5))
+            wait(0.1) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+
+            -- Fruit 6
+            local args6 = {
+                [1] = "d661b55bd8f24405a3856e6d239205ff",
+                [2] = 1
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Fruits: Consume"):FireServer(unpack(args6))
+            wait(0.1) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+        end
+
+        -- Pause für kurze Zeit, um die Last zu reduzieren und das Spiel nicht zu überlasten
+        wait(0.1)
+
+        -- Stoppen, wenn die Library entladen wird
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Place Sprinklers Toggle
+MainSection:AddToggle('AutoPlaceSprinklers', {
+    Text = 'Auto Place Sprinklers',
+    Default = false,
+    Tooltip = 'Activate to automatically place sprinklers',
+
+    Callback = function(Value)
+        _G.AutoPlaceSprinklers = Value
+    end
+})
+
+-- Hintergrundloop für Auto Place Sprinklers
+task.spawn(function()
+    while true do
+        if _G.AutoPlaceSprinklers then
+            local args = {
+                [1] = "Breakable Sprinkler",
+                [2] = "640960c86eb54e50898dfc86d964f115"
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Sprinklers: Consume"):InvokeServer(unpack(args))
+            wait(0) -- Warten, um sicherzustellen, dass der Server die Anfrage verarbeitet
+        end
+
+        -- Pause für kurze Zeit, um die Last zu reduzieren und das Spiel nicht zu überlasten
+        wait(0.1)
+
+        -- Stoppen, wenn die Library entladen wird
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Place Flag Toggle und Dropdown
+MainSection:AddToggle('AutoPlaceFlag', {
+    Text = 'Auto Place Flag',
+    Default = false,
+    Tooltip = 'Activate to automatically place a flag based on your selection',
+
+    Callback = function(Value)
+        _G.AutoPlaceFlag = Value
+    end
+})
+
+-- Dropdown für Flag-Auswahl
+MainSection:AddDropdown('FlagSelection', {
+    Values = {
+        'Shiny Flag',
+        'Rainbow Flag',
+        'Fortune Flag',
+        'Diamonds Flag',
+        'Hasty Flag',
+        'Coins Flag',
+        'Magnet Flag',
+    },
+    Default = 1,  -- Standardwert (Shiny Flag)
+    Multi = false,
+    Text = 'Select Flag',
+    Tooltip = 'Choose the flag to place automatically',
+
+    Callback = function(Value)
+        _G.SelectedFlag = Value
+    end
+})
+
+-- Hintergrundloop für Auto Place Flag
+task.spawn(function()
+    while true do
+        if _G.AutoPlaceFlag then
+            local selectedFlag = _G.SelectedFlag or 'Shiny Flag' -- Standardwert ist 'Shiny Flag', falls noch nichts ausgewählt wurde
+            
+            local flagArgs = {
+                ["Shiny Flag"] = {"Shiny Flag", "b55bfdd0116c498a98d5606e3faac79d"},
+                ["Rainbow Flag"] = {"Rainbow Flag", "5404b1daa10641c3ab31f86941729787"},
+                ["Fortune Flag"] = {"Fortune Flag", "0ff621d867644e39aafa758f5ac595e3"},
+                ["Diamonds Flag"] = {"Diamonds Flag", "96d27689c3624f25b120fce0d87d87e5"},
+                ["Hasty Flag"] = {"Hasty Flag", "502bb3d027644871928170943a7ceb24"},
+                ["Coins Flag"] = {"Coins Flag", "5c9da5d06612446bb974849fa2337349"},
+                ["Magnet Flag"] = {"Magnet Flag", "793c3081364d4698bd7b54bd7201e9ce"}
+            }
+
+            -- Überprüfen, ob das Flag gültig ist
+            local flagData = flagArgs[selectedFlag]
+            if flagData then
+                local args = {
+                    [1] = flagData[1],
+                    [2] = flagData[2]
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("FlexibleFlags_Consume"):InvokeServer(unpack(args))
+            end
+        end
+
+        -- Wartezeit, um unnötige Serveranfragen zu vermeiden
+        wait(0.1)
+
+        -- Stoppen, wenn die Library entladen wird
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Open Bundles Toggle und Dropdown
+MainSection:AddToggle('AutoOpenBundles', {
+    Text = 'Auto Open Bundles',
+    Default = false,
+    Tooltip = 'Activate to automatically open bundles based on your selection',
+
+    Callback = function(Value)
+        _G.AutoOpenBundles = Value
+    end
+})
+
+-- Dropdown für Bundle-Auswahl
+MainSection:AddDropdown('BundleSelection', {
+    Values = {
+        'Charm Stone',
+        'Large Gift Bag',
+        'Gift Bag',
+        'Toy Bundle',
+        'Potion Bundle',
+        'Fruit Bundle',
+        'Flag Bundle',
+        'Enchant Bundle',
+        'Large Potion Bundle',
+        'Large Enchant Bundle',
+    },
+    Default = 1,  -- Standardwert (Charm Stone)
+    Multi = false,
+    Text = 'Select Bundle',
+    Tooltip = 'Choose the bundle to open automatically',
+
+    Callback = function(Value)
+        _G.SelectedBundle = Value
+    end
+})
+
+-- Hintergrundloop für Auto Open Bundles
+task.spawn(function()
+    while true do
+        if _G.AutoOpenBundles then
+            local selectedBundle = _G.SelectedBundle or 'Charm Stone' -- Standardwert ist 'Charm Stone', falls noch nichts ausgewählt wurde
+            
+            local bundleArgs = {
+                ["Charm Stone"] = {"Charm Stone"},
+                ["Gift Bag"] = {"Gift Bag", 1},
+                ["Large Gift Bag"] = {"Large Gift Bag", 1},
+                ["Toy Bundle"] = {"Toy Bundle", 100},
+                ["Potion Bundle"] = {"Potion Bundle", 100},
+                ["Fruit Bundle"] = {"Fruit Bundle", 100},
+                ["Flag Bundle"] = {"Flag Bundle", 100},
+                ["Enchant Bundle"] = {"Enchant Bundle", 100},
+                ["Large Potion Bundle"] = {"Large Potion Bundle", 100},
+                ["Large Enchant Bundle"] = {"Large Enchant Bundle", 100}
+            }
+
+            -- Überprüfen, ob das Bundle gültig ist
+            local bundleData = bundleArgs[selectedBundle]
+            if bundleData then
+                local args = bundleData
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("GiftBag_Open"):InvokeServer(unpack(args))
+            end
+        end
+
+        -- Wartezeit, um unnötige Serveranfragen zu vermeiden
+        wait(0.1)
+
+        -- Stoppen, wenn die Library entladen wird
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Spin Ticket Wheel Toggle
+MainSection:AddToggle('AutoSpinTicketWheel', {
+    Text = 'Auto Spin Ticket Wheel',
+    Default = false,
+    Tooltip = 'Activate to automatically spin the wheel based on your selection',
+
+    Callback = function(Value)
+        _G.AutoSpinTicketWheel = Value
+    end
+})
+
+-- Dropdown für die Wheel-Auswahl
+MainSection:AddDropdown('WheelSelection', {
+    Values = {
+        'Crystal Key Wheel',
+        'Tech Wheel',
+        'Void Wheel'
+    },
+    Default = {'Crystal Key Wheel'},  -- Standardwert ist 'Crystal Key Wheel'
+    Multi = false,  -- Nur eine Auswahl möglich
+    Text = 'Select Wheel',
+    Tooltip = 'Choose the wheel to spin automatically',
+
+    Callback = function(Values)
+        _G.SelectedWheel = Values[1]  -- Nur eine Auswahl wird gespeichert
+    end
+})
+
+-- Hintergrundloop für Auto Spin Ticket Wheel
+task.spawn(function()
+    while true do
+        if _G.AutoSpinTicketWheel then
+            local selectedWheel = _G.SelectedWheel
+
+            -- Verschiedene Scripte für jedes Wheel
+            if selectedWheel == 'Crystal Key Wheel' then
+                -- Script für Crystal Key Wheel
+                local args = {"StarterWheel"}
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Spinny Wheel: Request Spin"):InvokeServer(unpack(args))
+
+            elseif selectedWheel == 'Tech Wheel' then
+                -- Script für Tech Wheel
+                local args = {"TechWheel"}
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Spinny Wheel: Request Spin"):InvokeServer(unpack(args))
+
+            elseif selectedWheel == 'Void Wheel' then
+                -- Script für Void Wheel
+                local args = {"VoidWheel"}
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Spinny Wheel: Request Spin"):InvokeServer(unpack(args))
+            end
+        end
+
+        -- Wartezeit, um unnötige Serveranfragen zu vermeiden
+        wait(0.1)
+
+        -- Stoppen, wenn die Library entladen wird
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Open Key Chests Toggle
+MainSection:AddToggle('AutoOpenKeyChests', {
+    Text = 'Auto Open Key Chests',
+    Default = false,
+    Tooltip = 'Activate to automatically open chests based on your selection',
+
+    Callback = function(Value)
+        _G.AutoOpenKeyChests = Value
+    end
+})
+
+-- Dropdown für die Key Chest-Auswahl
+MainSection:AddDropdown('KeyChestSelection', {
+    Values = {
+        'Crystal Chest',
+        'Tech Key',
+        'Void Key'
+    },
+    Default = {'Crystal Chest'},  -- Standardwert ist 'Crystal Chest'
+    Multi = false,  -- Nur eine Auswahl möglich
+    Text = 'Select Key Chest',
+    Tooltip = 'Choose which key chest to open automatically',
+
+    Callback = function(Values)
+        _G.SelectedKeyChest = Values[1]  -- Nur eine Auswahl wird gespeichert
+    end
+})
+
+-- Hintergrundloop für Auto Open Key Chests
+task.spawn(function()
+    while true do
+        if _G.AutoOpenKeyChests then
+            local selectedChest = _G.SelectedKeyChest
+
+            -- Verschiedene Scripte für jedes Key Chest
+            if selectedChest == 'Crystal Chest' then
+                -- Script für Crystal Key Chest
+                local args = {1}
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("CrystalKey_Unlock"):InvokeServer(unpack(args))
+
+            elseif selectedChest == 'Tech Key' then
+                -- Script für Tech Key Chest
+                local args = {1}
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("TechKey_Unlock"):InvokeServer(unpack(args))
+
+            elseif selectedChest == 'Void Key' then
+                -- Script für Void Key Chest
+                local args = {1}
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("VoidKey_Unlock"):InvokeServer(unpack(args))
+            end
+        end
+
+        -- Wartezeit, um unnötige Serveranfragen zu vermeiden
+        wait(0.1)
+
+        -- Stoppen, wenn die Library entladen wird
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Miscellaneous Section (Top Right)
+local MiscSection = Tabs.Main:AddRightGroupbox('Miscellaneous')
+
+-- Auto Claim Mailbox Toggle
+MiscSection:AddToggle('AutoClaimMailbox', {
+    Text = 'Auto Claim Mailbox',
+    Default = false,
+    Tooltip = 'Automatically claims mailbox rewards',
+
+    Callback = function(Value)
+        _G.AutoClaimMailbox = Value
+    end
+})
+
+-- Hintergrundloop für Auto Claim Mailbox
+task.spawn(function()
+    while true do
+        task.wait(0)
+
+        if _G.AutoClaimMailbox then
+            local args = {
+                [1] = { "884b34e35be142c1bc330de5d30b13d4" }
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Mailbox: Claim"):InvokeServer(unpack(args))
+        end
+
+        if Library.Unloaded then break end
+    end
+end)
+
+-- Auto Redeem Free Rewards Toggle
+MiscSection:AddToggle('AutoRedeemFreeRewards', {
+    Text = 'Auto Redeem Free Rewards',
+    Default = false,
+    Tooltip = 'Automatically redeem free rewards',
+
+    Callback = function(Value)
+        _G.AutoRedeemFreeRewards = Value
+    end
+})
+
+-- Hintergrundloop für Auto Redeem Free Rewards
+task.spawn(function()
+    while true do
+        task.wait(0)
+
+        if _G.AutoRedeemFreeRewards then
+            for i = 1, 12 do
+                local args = { [1] = i }
+                game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Redeem Free Gift"):InvokeServer(unpack(args))
+            end
+        end
+
+        if Library.Unloaded then break end
+    end
+end)
+
+-- UI Settings
+local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
+
+MenuGroup:AddButton('Unload', function() Library:Unload() end)
+MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'F1', NoUI = true, Text = 'Menu keybind' })
+
+Library.ToggleKeybind = Options.MenuKeybind -- Allows you to have a custom keybind for the menu
+
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+
+SaveManager:SetIgnoreIndexes({ 'MenuKeybind' })
+
+ThemeManager:SetFolder('MyScriptHub')
+SaveManager:SetFolder('MyScriptHub/specific-game')
+
+SaveManager:BuildConfigSection(Tabs['UI Settings'])
+
+ThemeManager:ApplyToTab(Tabs['UI Settings'])
+
+-- You can use the SaveManager:LoadAutoloadConfig() to load a config
+SaveManager:LoadAutoloadConfig()
+
+Library:SetWatermarkVisibility(true)
+
+local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
+    Library:SetWatermark(('LinoriaLib demo | %s fps | %s ms'):format(
+        math.floor(FPS),
+        math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
+    ));
+end);
+
+Library:OnUnload(function()
+    WatermarkConnection:Disconnect()
+
+    print('Unloaded!')
+    Library.Unloaded = true
+end)
+
+-- Rechts Section
+local RightSection = Tabs.Main:AddRightGroupbox('Servers')
+
+-- Rejoin Server Button in Right Section
+RightSection:AddButton('Rejoin Server', function()
+    -- Rejoin Funktion
+    local Players = game:GetService("Players")
+    local player = Players.LocalPlayer
+    local teleportService = game:GetService("TeleportService")
+    
+    -- Hole die aktuelle Spielwelt (den Server)
+    local placeId = game.PlaceId
+    local jobId = game.JobId
+
+    -- Teleportiere den Spieler zurück zum gleichen Server
+    teleportService:TeleportToPlaceInstance(placeId, jobId, player)
+end)
+
+-- Easter Event Section
+local EasterEventSection = Tabs.Main:AddRightGroupbox('Easter Event')
+
+EasterEventSection:AddToggle('AutoMakeHeroic', {
+    Text = 'Auto Make Heroic',
+    Default = false,
+    Tooltip = 'Automatically Use heroic',
+    Callback = function(Value)
+        _G.AutoMakeHeroic = Value
+        while _G.AutoMakeHeroic do
+            local args = {
+                [1] = "EasterEvent",
+                [2] = "SpawnHeroicChest"
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Network"):WaitForChild("Instancing_FireCustomFromClient"):FireServer(unpack(args))
+            task.wait(0)
+        end
+    end
+})
+
+EasterEventSection:AddToggle('AutoClaimEasterEggs', {
+    Text = 'Auto Claim Easter Eggs',
+    Default = false,
+    Tooltip = 'Automatically claim all Easter Eggs',
+    Callback = function(Value)
+        _G.AutoClaimEasterEggs = Value
+        if Value then
+            task.spawn(function()
+                local positions = {
+                    "Part_X1480_Y13_Z-22395", "Part_X1263_Y17_Z-22365", "Part_X1280_Y20_Z-22313",
+                    "Part_X1220_Y18_Z-22338", "Part_X1214_Y18_Z-22369", "Part_X1193_Y13_Z-22493",
+                    "Part_X1222_Y20_Z-22531", "Part_X1315_Y21_Z-22549", "Part_X1263_Y25_Z-22604",
+                    "Part_X1241_Y19_Z-22590", "Part_X1211_Y24_Z-22564", "Part_X1147_Y19_Z-22371",
+                    "Part_X1091_Y16_Z-22333", "Part_X1051_Y17_Z-22553", "Part_X1117_Y17_Z-22568",
+                    "Part_X1049_Y13_Z-22610", "Part_X992_Y18_Z-22522", "Part_X993_Y21_Z-22552",
+                    "Part_X941_Y23_Z-22613", "Part_X841_Y13_Z-22511", "Part_X760_Y28_Z-22621",
+                    "Part_X740_Y20_Z-22543", "Part_X617_Y24_Z-22491", "Part_X729_Y23_Z-22338",
+                    "Part_X753_Y13_Z-22389", "Part_X796_Y19_Z-22375", "Part_X826_Y13_Z-22393",
+                    "Part_X818_Y20_Z-22329", "Part_X686_Y13_Z-22398", "Part_X613_Y24_Z-22592",
+                    "Part_X683_Y13_Z-22497", "Part_X759_Y20_Z-22532", "Part_X940_Y14_Z-22352",
+                    "Part_X884_Y26_Z-22325", "Part_X981_Y18_Z-22533", "Part_X905_Y25_Z-22555",
+                    "Part_X899_Y20_Z-22530", "Part_X1054_Y27_Z-22347", "Part_X1094_Y20_Z-22289",
+                    "Part_X1254_Y22_Z-22328", "Part_X1310_Y25_Z-22335", "Part_X1316_Y15_Z-22385",
+                    "Part_X1263_Y17_Z-22535", "Part_X1445_Y13_Z-22561", "Part_X1416_Y18_Z-22346",
+                    -- Zusätzliche Parts
+                    "Part_X1307_Y20_Z-22541", "Part_X1130_Y13_Z-22304", "Part_X918_Y20_Z-22588",
+                    "Part_X900_Y19_Z-22363", "Part_X601_Y24_Z-22374", "Part_X1373_Y20_Z-22358",
+                    "Part_X1369_Y24_Z-22534", "Part_X1396_Y23_Z-22548"
+                }
+
+                local network = game:GetService("ReplicatedStorage"):WaitForChild("Network")
+                local claimRemote = network:WaitForChild("Easter Egg Hunt: Claim")
+
+                while _G.AutoClaimEasterEggs do
+                    for _, partName in ipairs(positions) do
+                        if not _G.AutoClaimEasterEggs then break end
+                        claimRemote:InvokeServer(partName)
+                        task.wait(0.1)
+                    end
+                    task.wait(120)
+                end
+            end)
+        end
+    end
+})
+
+-- Debugging Funktion
+local function debugPrint(message)
+    print("[Debug] " .. message)
+    Library:Notify("[Debug] " .. message, 5)
+end
+
+-- Variablen initialisieren
+local secretKeysUsed = 0
+local secretKeysLabel = EasterEventSection:AddLabel('🔑 Secret Keys Used: 0')
+
+-- Auto Easter Secret Toggle
+EasterEventSection:AddToggle('AutoEasterSecret', {
+    Text = 'Auto Easter Secret',
+    Default = false,
+    Tooltip = 'Automatically farm Easter secrets',
+
+    Callback = function(Value)
+        getgenv().AutoEasterSecret = Value
+        
+        if Value then
+            debugPrint("Starting Auto Easter Secret...")
+            secretKeysUsed = 0
+            secretKeysLabel:Set('🔑 Secret Keys Used: '..secretKeysUsed)
+            
+            local function safeTeleport(pos)
+                local char = game.Players.LocalPlayer.Character
+                if char and char:FindFirstChild('HumanoidRootPart') then
+                    char.HumanoidRootPart.CFrame = CFrame.new(pos)
+                    debugPrint("Teleported to " .. tostring(pos))
+                    return true
+                else
+                    debugPrint("Teleport failed - character not found")
+                    return false
+                end
+            end
+
+            task.spawn(function()
+                while getgenv().AutoEasterSecret and not Library.Unloaded do
+                    -- 1. Easter Secret aktivieren
+                    debugPrint("Attempting to activate Easter Secret...")
+                    local success, err = pcall(function()
+                        game:GetService('ReplicatedStorage').Network.Easter_SecretUnlock:InvokeServer()
+                    end)
+                    
+                    if success then
+                        debugPrint("Successfully activated Easter Secret")
+                    else
+                        debugPrint("Failed to activate Easter Secret: " .. tostring(err))
+                    end
+                    
+                    -- 2. Teleport-Route
+                    if not safeTeleport(Vector3.new(1265.44, 250.74, -22486.60)) then break end
+                    task.wait(1)
+                    if not getgenv().AutoEasterSecret then break end
+
+                    if not safeTeleport(Vector3.new(1265.38, 21.52, -22347.10)) then break end
+                    task.wait(6)
+                    if not getgenv().AutoEasterSecret then break end
+
+                    if not safeTeleport(Vector3.new(1203.11, -300.65, -22130.27)) then break end
+                    task.wait(1)
+                    if not getgenv().AutoEasterSecret then break end
+                    
+                    -- 3. E-Taste simulieren
+                    debugPrint("Simulating E key presses...")
+                    for i = 1, 4 do
+                        if not getgenv().AutoEasterSecret then break end
+                        pcall(function()
+                            game:GetService('VirtualInputManager'):SendKeyEvent(true, Enum.KeyCode.E, false, game)
+                            task.wait(0.05)
+                            game:GetService('VirtualInputManager'):SendKeyEvent(false, Enum.KeyCode.E, false, game)
+                            task.wait(0.2)
+                        end)
+                    end
+
+                    if not safeTeleport(Vector3.new(1166.88, -300.66, -22132.41)) then break end
+                    task.wait(5)
+                    
+                    -- 4. Zähler aktualisieren
+                    secretKeysUsed += 1
+                    secretKeysLabel:Set('🔑 Secret Keys Used: '..secretKeysUsed)
+                    debugPrint("Completed cycle #" .. secretKeysUsed)
+                end
+                debugPrint("Auto Easter Secret stopped")
+            end)
+        else
+            debugPrint("Auto Easter Secret disabled")
+        end
+    end
+})
