@@ -466,9 +466,9 @@ local MiscSection = Tabs.Main:AddRightGroupbox('Miscellaneous')
 
 -- Auto Claim Mailbox Toggle
 MiscSection:AddToggle('AutoClaimMailbox', {
-    Text = 'Auto Claim Mailbox (not working im no )',
+    Text = 'Auto Claim Mailbox',
     Default = false,
-    Tooltip = 'Automatically claims mailbox rewards',
+    Tooltip = 'NOT WORKING IM FIXING ',
 
     Callback = function(Value)
         _G.AutoClaimMailbox = Value
