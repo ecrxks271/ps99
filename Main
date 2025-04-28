@@ -620,7 +620,6 @@ EasterEventSection:AddToggle('AutoClaimEasterEggs', {
                     "Part_X899_Y20_Z-22530", "Part_X1054_Y27_Z-22347", "Part_X1094_Y20_Z-22289",
                     "Part_X1254_Y22_Z-22328", "Part_X1310_Y25_Z-22335", "Part_X1316_Y15_Z-22385",
                     "Part_X1263_Y17_Z-22535", "Part_X1445_Y13_Z-22561", "Part_X1416_Y18_Z-22346",
-                    -- Zusätzliche Parts
                     "Part_X1307_Y20_Z-22541", "Part_X1130_Y13_Z-22304", "Part_X918_Y20_Z-22588",
                     "Part_X900_Y19_Z-22363", "Part_X601_Y24_Z-22374", "Part_X1373_Y20_Z-22358",
                     "Part_X1369_Y24_Z-22534", "Part_X1396_Y23_Z-22548"
