@@ -599,7 +599,7 @@ EasterEventSection:AddToggle('AutoMakeHeroic', {
 EasterEventSection:AddToggle('AutoClaimEasterEggs', {
     Text = 'Auto Claim Easter Eggs',
     Default = false,
-    Tooltip = 'Automatically claim all Easter Eggs',
+    Tooltip = 'Automatically claims all Easter Eggs Every 30 Minutes',
     Callback = function(Value)
         _G.AutoClaimEasterEggs = Value
         if Value then
