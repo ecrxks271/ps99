@@ -1,5 +1,7 @@
 local allowedUsers = {
     ["ericstinkt33"] = true,
+    ["SaintRayFarm1"] = true,
+    ["VizzayProbably"] = true,
     ["banktohuge1"] = true
 }
 
