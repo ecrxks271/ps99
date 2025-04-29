@@ -657,7 +657,7 @@ EasterEventSection:AddToggle('AutoClaimEasterEggs', {
                         claimRemote:InvokeServer(partName)
                         task.wait(0.1)
                     end
-                    task.wait(120)
+                    task.wait(10)
                 end
             end)
         end
