@@ -347,7 +347,7 @@ task.spawn(function()
         end
 
         -- Wartezeit, um unnötige Serveranfragen zu vermeiden
-        wait(0.1)
+        wait(0.001)
 
         -- Stoppen, wenn die Library entladen wird
         if Library.Unloaded then break end
