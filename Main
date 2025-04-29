@@ -1,3 +1,14 @@
+local allowedUsers = {
+    ["ericstinkt33"] = true,
+    ["banktohuge1"] = true
+}
+
+local localPlayer = game.Players.LocalPlayer
+
+if not allowedUsers[localPlayer.Name] then
+    localPlayer:Kick("Your not Whitelisted 😢")
+    return
+end
 local allowedPlaceIds = {8737899170, 15588442388, 17503543197}
 
 local isValidGame = false
