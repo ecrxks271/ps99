@@ -565,7 +565,7 @@ ThemeManager:ApplyToTab(Tabs['UI Settings'])
 -- You can use the SaveManager:LoadAutoloadConfig() to load a config
 SaveManager:LoadAutoloadConfig()
 
-Library:SetWatermarkVisibility(true)
+Library:SetWatermarkVisibility(false)
 
 local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
     Library:SetWatermark(('Pet Simulator 99! 🐰 | %s fps | %s ms'):format(
