@@ -322,7 +322,7 @@ MainSection:AddDropdown('BundleSelection', {
         'Mini Chest',
     },
     Default = 1,  -- Standardwert (Charm Stone)
-    Multi = false,
+    Multi = true,
     Text = 'Select Bundle',
     Tooltip = 'Choose the bundle to open automatically',
 
