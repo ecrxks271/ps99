@@ -2,6 +2,7 @@ local allowedUsers = {
     ["ericstinkt33"] = true,
     ["saintRayFarm1"] = true,
     ["VizzayProbably"] = true,
+    ["balamannog5"] = true,
     ["banktohuge1"] = true
 }
 
