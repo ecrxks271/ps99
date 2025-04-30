@@ -568,7 +568,7 @@ SaveManager:LoadAutoloadConfig()
 Library:SetWatermarkVisibility(true)
 
 local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
-    Library:SetWatermark(('LinoriaLib demo | %s fps | %s ms'):format(
+    Library:SetWatermark(('Pet Simulator 99! 🐰 | %s fps | %s ms'):format(
         math.floor(FPS),
         math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
     ));
