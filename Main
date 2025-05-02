@@ -3,6 +3,7 @@ local allowedUsers = {
     ["saintRayFarm1"] = true,
     ["VizzayProbably"] = true,
     ["balamannog5"] = true,
+    ["Deezy_Hatch1"] = true,
     ["banktohuge1"] = true
 }
 
