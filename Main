@@ -252,7 +252,7 @@ MainSection:AddDropdown('FlagSelection', {
         'Exotic Treasure Flag',
         'Magnet Flag',
     },
-    Default = 1,  -- Standardwert (Shiny Flag)
+    Default = 0,
     Multi = false,
     Text = 'Select Flag',
     Tooltip = 'Choose the flag to place automatically',
@@ -325,7 +325,7 @@ MainSection:AddDropdown('BundleSelection', {
         'Large Enchant Bundle',
         'Mini Chest',
     },
-    Default = 1,  -- Standardwert (Charm Stone)
+    Default = 0,
     Multi = false,
     Text = 'Select Bundle',
     Tooltip = 'Choose the bundle to open automatically',
