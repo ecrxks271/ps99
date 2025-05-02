@@ -249,6 +249,7 @@ MainSection:AddDropdown('FlagSelection', {
         'Diamonds Flag',
         'Hasty Flag',
         'Coins Flag',
+        'Exotic Treasure Flag',
         'Magnet Flag',
     },
     Default = 1,  -- Standardwert (Shiny Flag)
@@ -274,7 +275,8 @@ task.spawn(function()
                 ["Diamonds Flag"] = {"Diamonds Flag", "96d27689c3624f25b120fce0d87d87e5"},
                 ["Hasty Flag"] = {"Hasty Flag", "502bb3d027644871928170943a7ceb24"},
                 ["Coins Flag"] = {"Coins Flag", "5c9da5d06612446bb974849fa2337349"},
-                ["Magnet Flag"] = {"Magnet Flag", "793c3081364d4698bd7b54bd7201e9ce"}
+                ["Magnet Flag"] = {"Magnet Flag", "793c3081364d4698bd7b54bd7201e9ce"},
+                ["Exotic Treasure Flag"] = {"Exotic Treasure Flag", "3de3150bb62845c185192c3c8b475519"}
             }
 
             -- Überprüfen, ob das Flag gültig ist
